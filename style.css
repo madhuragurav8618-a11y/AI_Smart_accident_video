@@ -1,0 +1,611 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #050b16;
+    color: white;
+    overflow: hidden;
+}
+
+.video {
+    width: 100vw;
+    height: 100vh;
+}
+
+.scene {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    padding-top: 70px;
+    position: relative;
+}
+
+.scene.active {
+    display: block;
+}
+
+/* HEADINGS */
+
+h1 {
+    font-size: 48px;
+    margin: 15px;
+}
+
+h2 {
+    font-size: 38px;
+    margin-bottom: 35px;
+}
+
+h3 {
+    font-size: 25px;
+    margin: 15px;
+}
+
+p {
+    font-size: 21px;
+    margin: 12px;
+}
+
+.small {
+    font-size: 18px;
+}
+
+.line {
+    width: 400px;
+    height: 4px;
+    background: white;
+    margin: 30px auto;
+}
+
+/* NORMAL DRIVING */
+
+.road {
+    width: 850px;
+    height: 300px;
+    background: #292929;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    border-top: 8px solid #777;
+    border-bottom: 8px solid #777;
+}
+
+.road::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background: repeating-linear-gradient(
+            to right,
+            white 0 80px,
+            transparent 80px 150px
+    );
+    top: 145px;
+    left: 0;
+}
+
+.car {
+    position: absolute;
+    font-size: 90px;
+    left: 100px;
+    top: 100px;
+    animation: drive 4s linear infinite;
+}
+
+@keyframes drive {
+    from {
+        left: 80px;
+    }
+
+    to {
+        left: 700px;
+    }
+}
+
+.status {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 22px;
+}
+
+.normal {
+    background: #164d28;
+}
+
+/* 3D ACCIDENT */
+
+.accident-scene {
+    perspective: 1000px;
+}
+
+.scene-label {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 15px;
+    opacity: 0.7;
+}
+
+.three-d-road {
+    width: 850px;
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
+    transform: rotateX(55deg);
+    transform-style: preserve-3d;
+}
+
+.road-3d {
+    width: 850px;
+    height: 400px;
+    background: #252525;
+    position: absolute;
+    border: 5px solid #555;
+    transform-style: preserve-3d;
+}
+
+.road-line {
+    position: absolute;
+    width: 120px;
+    height: 10px;
+    background: white;
+    left: 365px;
+}
+
+.line1 {
+    top: 60px;
+}
+
+.line2 {
+    top: 190px;
+}
+
+.line3 {
+    top: 320px;
+}
+
+/* 3D CAR */
+
+.car-3d {
+    position: absolute;
+    width: 180px;
+    height: 100px;
+    left: 330px;
+    top: 150px;
+    transform-style: preserve-3d;
+    animation: accidentCar 2s forwards;
+}
+
+.car-body {
+    position: absolute;
+    width: 180px;
+    height: 70px;
+    background: #e53935;
+    border-radius: 25px 35px 12px 12px;
+    top: 15px;
+    box-shadow: 0 10px 0 #9d1d1d;
+}
+
+.car-body::before {
+    content: "";
+    position: absolute;
+    width: 85px;
+    height: 45px;
+    background: #81d4fa;
+    left: 48px;
+    top: -30px;
+    border-radius: 35px 35px 5px 5px;
+}
+
+.car-window {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    background: #102a43;
+    left: 60px;
+    top: -20px;
+    border-radius: 15px 15px 3px 3px;
+}
+
+.car-light {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: yellow;
+    right: 5px;
+    top: 25px;
+    border-radius: 50%;
+}
+
+.wheel {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: #111;
+    border-radius: 50%;
+    bottom: -5px;
+    border: 6px solid #777;
+}
+
+.wheel-left {
+    left: 25px;
+}
+
+.wheel-right {
+    right: 25px;
+}
+
+@keyframes accidentCar {
+
+    0% {
+        transform: translateX(-300px) rotateZ(0deg);
+    }
+
+    65% {
+        transform: translateX(100px) rotateZ(0deg);
+    }
+
+    75% {
+        transform: translateX(150px) rotateZ(-15deg);
+    }
+
+    100% {
+        transform: translateX(170px) rotateZ(35deg);
+    }
+}
+
+/* CRASH */
+
+.crash-flash {
+    position: absolute;
+    font-size: 100px;
+    left: 450px;
+    top: 120px;
+    opacity: 0;
+    animation: explosion 2s forwards;
+}
+
+@keyframes explosion {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* DEBRIS */
+
+.debris {
+    position: absolute;
+    font-size: 35px;
+    opacity: 0;
+    animation: debrisFly 2s forwards;
+}
+
+.debris1 {
+    left: 420px;
+    top: 170px;
+}
+
+.debris2 {
+    left: 470px;
+    top: 160px;
+}
+
+.debris3 {
+    left: 500px;
+    top: 200px;
+}
+
+.debris4 {
+    left: 440px;
+    top: 220px;
+}
+
+@keyframes debrisFly {
+
+    0% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(100px, -80px) rotate(180deg);
+    }
+}
+
+/* SMOKE */
+
+.smoke {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #888;
+    border-radius: 50%;
+    opacity: 0;
+    animation: smokeRise 3s infinite;
+}
+
+.smoke1 {
+    left: 500px;
+    top: 170px;
+}
+
+.smoke2 {
+    left: 540px;
+    top: 150px;
+    animation-delay: 0.5s;
+}
+
+.smoke3 {
+    left: 460px;
+    top: 180px;
+    animation-delay: 1s;
+}
+
+@keyframes smokeRise {
+
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(1.5);
+    }
+}
+
+.impact-warning {
+    width: 500px;
+    margin: 30px auto;
+    padding: 18px;
+    background: #631c1c;
+    border: 2px solid red;
+    border-radius: 12px;
+    font-size: 22px;
+}
+
+.impact-warning span {
+    display: block;
+    font-size: 17px;
+    margin-top: 8px;
+}
+
+/* SENSOR */
+
+.sensor-box {
+    width: 650px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    background: #101c2d;
+    border-radius: 15px;
+}
+
+.sensor-box div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sensor-box strong {
+    font-size: 28px;
+}
+
+/* WARNING */
+
+.warning-scene {
+    background: #180707;
+}
+
+.warning-icon {
+    font-size: 100px;
+    animation: warningBlink 0.7s infinite alternate;
+}
+
+@keyframes warningBlink {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+}
+
+.countdown {
+    font-size: 90px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+button {
+    padding: 15px 35px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* GPS */
+
+.gps-box {
+    width: 700px;
+    margin: auto;
+    padding: 30px;
+    background: #10233a;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.map {
+    font-size: 130px;
+}
+
+.coordinates {
+    text-align: left;
+}
+
+.coordinates strong {
+    font-size: 28px;
+}
+
+/* NETWORK */
+
+.network {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 80px;
+}
+
+.network-item {
+    width: 150px;
+    padding: 25px;
+    background: #10233a;
+    border-radius: 15px;
+    font-size: 45px;
+}
+
+.network-item span {
+    display: block;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.network-arrow {
+    font-size: 50px;
+}
+
+.sending {
+    margin-top: 50px;
+    font-size: 25px;
+    animation: sending 1s infinite alternate;
+}
+
+@keyframes sending {
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* EMERGENCY */
+
+.emergency-scene {
+    background: #210707;
+}
+
+.phone {
+    font-size: 120px;
+}
+
+.alert-message {
+    width: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    border: 3px solid red;
+    background: #3b0c0c;
+    border-radius: 15px;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+    width: 750px;
+    margin: auto;
+    padding: 25px;
+    background: #111827;
+    border-radius: 15px;
+}
+
+.dashboard-title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.dashboard-status {
+    padding: 18px;
+    background: #601717;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.dashboard-grid div {
+    background: #1d2939;
+    padding: 20px;
+}
+
+.dashboard-grid small {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.dashboard-grid strong {
+    font-size: 22px;
+}
+
+/* FLOW */
+
+.flow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 80px;
+}
+
+.flow div {
+    background: #14243a;
+    padding: 25px;
+    border-radius: 12px;
+    min-width: 100px;
+    font-size: 18px;
+}
+
+.flow div:first-line {
+    font-size: 30px;
+}
+
+.flow span {
+    font-size: 35px;
+}
