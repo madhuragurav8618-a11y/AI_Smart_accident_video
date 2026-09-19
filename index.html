@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        AI Smart Accident Detection
+    </title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="video">
+
+
+    <!-- =====================================
+         1. INTRO
+    ====================================== -->
+
+    <section class="scene active">
+
+        <h1>
+            AI SMART ACCIDENT
+        </h1>
+
+        <h1>
+            DETECTION & EMERGENCY ALERT SYSTEM
+        </h1>
+
+        <p>
+            Computer Model Competition – 2026
+        </p>
+
+        <div class="line"></div>
+
+        <p class="small">
+            Hardware Meets Software • IoT • AI • Real-World Safety
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================
+         2. NORMAL DRIVING
+    ====================================== -->
+
+    <section class="scene">
+
+        <h2>
+            🚗 NORMAL DRIVING
+        </h2>
+
+        <div class="road">
+
+            <div class="car">
+                🚗
+            </div>
+
+        </div>
+
+        <div class="status normal">
+
+            🟢 SYSTEM STATUS: NORMAL
+
+        </div>
+
+        <p>
+            Vehicle is moving normally.
+        </p>
+
+        <p>
+            MPU6050 continuously monitors movement.
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================
+         3. 3D ACCIDENT
+    ====================================== -->
+
+    <section class="scene accident-scene">
+
+        <div class="scene-label">
+
+            LIVE VEHICLE SIMULATION
+
+        </div>
+
+
+        <h2>
+            💥 ACCIDENT OCCURS
+        </h2>
+
+
+        <div class="three-d-road">
+
+
+            <!-- ROAD -->
+
+            <div class="road-3d">
+
+                <div class="road-line line1"></div>
+
+                <div class="road-line line2"></div>
+
+                <div class="road-line line3"></div>
+
+            </div>
+
+
+            <!-- CAR -->
+
+            <div class="car-3d">
+
+                <div class="car-body">
+
+                    <div class="car-window"></div>
+
+                    <div class="car-light"></div>
+
+                </div>
+
+
+                <div class="wheel wheel-left"></div>
+
+                <div class="wheel wheel-right"></div>
+
+            </div>
+
+
+            <!-- IMPACT -->
+
+            <div class="crash-flash">
+
+                💥
+
+            </div>
+
+
+            <!-- DEBRIS -->
+
+            <div class="debris debris1">
+                ◆
+            </div>
+
+            <div class="debris debris2">
+                ◆
+            </div>
+
+            <div class="debris debris3">
+                ●
+            </div>
+
+            <div class="debris debris4">
+                ◆
+            </div>
+
+
+            <!-- SMOKE -->
+
+            <div class="smoke smoke1"></div>
+
+            <div class="smoke smoke2"></div>
+
+            <div class="smoke smoke3"></div>
+
+
+        </div>
+
+
+        <!-- IMPACT INFORMATION -->
+
+        <div class="impact-warning">
+
+            <strong>
+                ⚠ ABNORMAL IMPACT DETECTED
+            </strong>
+
+            <span>
+                MPU6050 → ESP32
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         4. MPU6050 SENSOR
+    ====================================== -->
+
+    <section class="scene">
+
+        <h2>
+            📡 MPU6050 DETECTS IMPACT
+        </h2>
+
+
+        <div class="sensor-box">
+
+
+            <div>
+
+                <span>
+                    Acceleration
+                </span>
+
+                <strong>
+                    6.84 g
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Motion
+                </span>
+
+                <strong>
+                    ABNORMAL
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Impact
+                </span>
+
+                <strong>
+                    YES
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <p>
+            ESP32 receives the sensor information.
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================
+         5. WARNING / BUZZER
+    ====================================== -->
+
+    <section class="scene warning-scene">
+
+        <h2>
+            ⚠️ WARNING!
+        </h2>
+
+
+        <div class="warning-icon">
+
+            ⚠️
+
+        </div>
+
+
+        <h3>
+            🔊 BUZZER ACTIVE
+        </h3>
+
+
+        <div class="countdown"
+             id="countdown">
+
+            10
+
+        </div>
+
+
+        <p>
+
+            Emergency alert will be sent
+            if the user does not cancel.
+
+        </p>
+
+
+        <button onclick="cancelDemo()">
+
+            CANCEL ALERT
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =====================================
+         6. GPS LOCATION
+    ====================================== -->
+
+    <section class="scene">
+
+        <h2>
+            📍 GPS LOCATION CAPTURED
+        </h2>
+
+
+        <div class="gps-box">
+
+
+            <div class="map">
+
+                📍
+
+            </div>
+
+
+            <div class="coordinates">
+
+
+                <p>
+                    Latitude
+                </p>
+
+                <strong>
+                    12.9141° N
+                </strong>
+
+
+                <p>
+                    Longitude
+                </p>
+
+                <strong>
+                    74.8560° E
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+        <p class="location">
+
+            Accident location identified successfully.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================
+         7. ESP32 + WIFI
+    ====================================== -->
+
+    <section class="scene">
+
+        <h2>
+            📶 ESP32 SENDS EMERGENCY DATA
+        </h2>
+
+
+        <div class="network">
+
+
+            <div class="network-item">
+
+                📡
+
+                <span>
+                    ESP32
+                </span>
+
+            </div>
+
+
+            <div class="network-arrow">
+                ➜
+            </div>
+
+
+            <div class="network-item">
+
+                📶
+
+                <span>
+                    Wi-Fi
+                </span>
+
+            </div>
+
+
+            <div class="network-arrow">
+                ➜
+            </div>
+
+
+            <div class="network-item">
+
+                ☁️
+
+                <span>
+                    Cloud
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="sending">
+
+            SENDING EMERGENCY DATA...
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         8. EMERGENCY ALERT
+    ====================================== -->
+
+    <section class="scene emergency-scene">
+
+        <h2>
+            🚨 EMERGENCY ALERT SENT
+        </h2>
+
+
+        <div class="phone">
+
+            📱
+
+        </div>
+
+
+        <div class="alert-message">
+
+
+            <h3>
+                🚨 EMERGENCY
+            </h3>
+
+
+            <p>
+                Possible vehicle accident detected.
+            </p>
+
+
+            <p>
+                📍 Location attached
+            </p>
+
+
+            <p>
+                🚑 Emergency assistance required.
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         9. LIVE DASHBOARD
+    ====================================== -->
+
+    <section class="scene">
+
+        <h2>
+            💻 LIVE WEB DASHBOARD
+        </h2>
+
+
+        <div class="dashboard">
+
+
+            <div class="dashboard-title">
+
+                VEHICLE MONITORING
+
+            </div>
+
+
+            <div class="dashboard-status">
+
+                🔴 POSSIBLE ACCIDENT
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+
+                <div>
+
+                    <small>
+                        VEHICLE
+                    </small>
+
+                    <strong>
+                        ACCIDENT
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        IMPACT
+                    </small>
+
+                    <strong>
+                        6.84 g
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        GPS
+                    </small>
+
+                    <strong>
+                        CAPTURED
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        CLOUD
+                    </small>
+
+                    <strong>
+                        UPDATED
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         10. COMPLETE FLOW
+    ====================================== -->
+
+    <section class="scene">
+
+        <h2>
+            🔄 COMPLETE SYSTEM FLOW
+        </h2>
+
+
+        <div class="flow">
+
+
+            <div>
+
+                🚗
+
+                <br>
+
+                NORMAL
+
+            </div>
+
+
+            <span>
+                →
+            </span>
+
+
+            <div>
+
+                💥
+
+                <br>
+
+                ACCIDENT
+
+            </div>
+
+
+            <span>
+                →
+            </span>
+
+
+            <div>
+
+                ⚠️
+
+                <br>
+
+                WARNING
+
+            </div>
+
+
+            <span>
+                →
+            </span>
+
+
+            <div>
+
+                📍
+
+                <br>
+
+                GPS
+
+            </div>
+
+
+            <span>
+                →
+            </span>
+
+
+            <div>
+
+                📶
+
+                <br>
+
+                ESP32
+
+            </div>
+
+
+            <span>
+                →
+            </span>
+
+
+            <div>
+
+                🚨
+
+                <br>
+
+                ALERT
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         11. END
+    ====================================== -->
+
+    <section class="scene">
+
+        <h1>
+            AI SMART ACCIDENT
+        </h1>
+
+        <h1>
+            DETECTION SYSTEM
+        </h1>
+
+
+        <p>
+
+            Faster Detection •
+            Location •
+            Emergency Response
+
+        </p>
+
+
+        <div class="line"></div>
+
+
+        <h2>
+            THANK YOU
+        </h2>
+
+
+        <p>
+            Computer Model Competition – 2026
+        </p>
+
+    </section>
+
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
